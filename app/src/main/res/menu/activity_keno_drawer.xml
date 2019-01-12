@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/Tasks"
+            android:icon="@drawable/tasks"
+            android:title="Tasks" />
+        <item
+            android:id="@+id/TimeTable"
+            android:icon="@drawable/timetable"
+            android:title="Time Table" />
+        <item
+            android:id="@+id/Syllabus"
+            android:icon="@drawable/syllabus"
+            android:title="Syllabus"/>
+        <item
+            android:id="@+id/Notes"
+            android:icon="@drawable/notes"
+            android:title="Notes" />
+        <item
+            android:id="@+id/Tools"
+            android:icon="@drawable/tools"
+            android:title="Tools"/>
+
+
+    </group>
+
+</menu>

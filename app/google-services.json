@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "685662590618",
+    "firebase_url": "https://keno-f3652.firebaseio.com",
+    "project_id": "keno-f3652",
+    "storage_bucket": "keno-f3652.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685662590618:android:a3bd6c4d8f711064",
+        "android_client_info": {
+          "package_name": "com.bl4k3.keno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685662590618-dari1qal3cau2k6pqa8dqijnmvjrt2ti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bl4k3.keno",
+            "certificate_hash": "7f6f154d0bf9ed8a9043c7b199025d03b8d6d2be"
+          }
+        },
+        {
+          "client_id": "685662590618-gljom7i2bgcn299s9l0b4mguunj857i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9e2I748F5xWii8X46zYBYbxmqka-9cfk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685662590618-gljom7i2bgcn299s9l0b4mguunj857i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

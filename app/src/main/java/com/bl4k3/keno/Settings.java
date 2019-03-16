@@ -3,9 +3,11 @@ package com.bl4k3.keno;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -149,21 +151,54 @@ public class Settings extends AppCompatActivity {
     }
 
     public void deleteAccount() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            user.delete()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                //Log.d(TAG, "User account deleted.");
-                                finish();
-                                startActivity(new Intent(getApplicationContext(),Welcome.class));
-                                Toast.makeText(getApplicationContext(),"Successfully Deleted your Account",Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-        }
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+// Alert for deletion
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Confirmation");
+        alertDialogBuilder.setMessage("Are you sure, You want to Delete?");
+        alertDialogBuilder.setCancelable(false);
+
+
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                //finish();
+                if (user != null) {
+                    user.delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        //Log.d(TAG, "User account deleted.");
+                                        finish();
+                                        startActivity(new Intent(getApplicationContext(),Welcome.class));
+                                        Toast.makeText(getApplicationContext(),"Successfully Deleted your Account",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(getApplicationContext(),"You clicked over No",Toast.LENGTH_SHORT).show();
+            }
+        });
+        alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(getApplicationContext(),"You clicked on Cancel",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+        //end of alert box
+
+
     }
     public void cancel(){
         Intent notificationIntent = new Intent(Settings.this, AlarmReceiver.class);

@@ -1,8 +1,11 @@
 package com.bl4k3.keno;
 import android.app.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -45,6 +48,34 @@ public class Welcome extends Activity {
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
         tx.setTypeface(custom_font);
     }
+
+    private boolean checkInternetConnection() {
+        // get Connectivity Manager object to check connection
+        ConnectivityManager connec
+                =(ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+
+        // Check for network connections
+        if ( connec.getNetworkInfo(0).getState() ==
+                android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() ==
+                        android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() ==
+                        android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+            Toast.makeText(this, " Connected ", Toast.LENGTH_LONG).show();
+            return true;
+        }else if (
+                connec.getNetworkInfo(0).getState() ==
+                        android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() ==
+                                android.net.NetworkInfo.State.DISCONNECTED  ) {
+            Toast.makeText(this, " Not Connected ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return false;
+    }
+
+
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -66,7 +97,10 @@ public class Welcome extends Activity {
             editTextPassword.requestFocus();
             return;
         }
-
+        boolean state = checkInternetConnection();
+        if (!state){
+            return;
+        }
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -106,6 +140,7 @@ public class Welcome extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        //checkInternetConenction();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             if(!user.isEmailVerified()) {

@@ -74,6 +74,9 @@ public class Keno extends AppCompatActivity
                 finish();
                 startActivity(new Intent(this, Welcome.class));
                 break;
+            case R.id.about:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -10,6 +10,14 @@
     <string name="title_activity_keno">Keno</string>
 
 
+    <string name="About">Keno is an Attendance Manager that allows you to manage your attendance effectively and easily . </string>
+    <string name="Github">Fork us on GitHub</string>
+    <string name="Rate">Rate Us</string>
+    <string name="Donate">Donate</string>
+    <string name="Contact">Contact Us</string>
+    <string name="version">Version 0.0.3-beta</string>
+
+
     <string name="already_a_member_login">Already a member? Login</string>
     <string name="signup">Signup</string>
     <string name="confirm_password">Confirm Password</string>

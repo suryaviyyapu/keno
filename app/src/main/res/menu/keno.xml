@@ -6,10 +6,15 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/about"
+        android:orderInCategory="100"
+        android:title="About"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/Logout"
         android:orderInCategory="100"
         android:title="@string/logout"
         app:showAsAction="never"/>
+
 </menu>

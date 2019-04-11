@@ -37,6 +37,7 @@ import java.util.Locale;
 
 public class Signup extends AppCompatActivity {
     ProgressBar progressBar;
+    private final static String TAG = "signup";
     Button signup,login;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -92,6 +93,11 @@ public class Signup extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                FirebaseUser fbUser = mAuth.getCurrentUser();
+                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(username).build();
+                                Log.d(TAG,"Done");
+                                fbUser.updateProfile(profileChangeRequest);
                                 CollectionReference dbusers = db.collection("Users");
                                 final User user= new User(
                                         username,

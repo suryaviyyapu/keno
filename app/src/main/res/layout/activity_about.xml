@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo"
+        android:id="@+id/icon1"/>
+
+    <TextView
+        android:layout_below="@+id/icon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/About"
+        android:textSize="18sp"
+        android:theme="@style/Formatting" />
+
+    <View
+        android:layout_above="@+id/version"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9" />
+
+    <TextView
+        android:layout_above="@+id/contact"
+        android:id="@+id/version"
+        style="@style/Formatting"
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:text="@string/version" />
+
+    <View
+        android:id="@+id/line5"
+        android:layout_above="@+id/contact"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9" />
+
+    <LinearLayout
+        android:id="@+id/contact"
+        android:layout_above="@+id/git"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/contact_us"
+            style="@style/Formatting"
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:onClick="email_link"
+            android:text="@string/Contact" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_above="@+id/git"
+        android:id="@+id/line4"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9" />
+
+    <LinearLayout
+        android:layout_above="@+id/line3"
+        android:id="@+id/git"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/github"
+            style="@style/Formatting"
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/Github"
+            android:onClick="githublink"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line3"
+        android:layout_above="@+id/ratep"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9" />
+
+    <LinearLayout
+        android:id="@+id/ratep"
+        android:layout_above="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_above="@+id/icon"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9" />
+
+    <LinearLayout
+        android:id="@+id/icon"
+        android:layout_above="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/icon_source"
+            style="@style/Formatting"
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/Donate"
+            android:onClick="donate"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cdc9c9"
+        android:layout_marginBottom="20dp"/>
+
+
+</RelativeLayout>

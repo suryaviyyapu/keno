@@ -1,108 +1,55 @@
 package com.bl4k3.keno;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
 
+import java.util.Calendar;
 
-/*Sending notification to user daily*/
 public class AlarmReceiver extends BroadcastReceiver {
-    private static final String CHANNEL_ID = "com.bl4k3.Keno.channelId";
+    int id =0;
+    String Title,Text;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onReceive(Context context, Intent intent) {
-        if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
-            Intent notificationIntent = new Intent(context, AttendanceActivity.class);
-
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-            stackBuilder.addParentStack(AttendanceActivity.class);
-            stackBuilder.addNextIntent(notificationIntent);
-
-            PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            Notification.Builder builder = new Notification.Builder(context);
-
-            Notification notification = builder.setContentTitle("Alert!!!")
-                    .setContentText("Did you attend your college today?")
-                    .setTicker("New Attendance Alert!")
+    public void onReceive(Context context, Intent i) {
+        Calendar rightNow = Calendar.getInstance();
+        int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
+        Log.i("curent hour", String.valueOf(currentHour));
+        if((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)  ){
+            if(currentHour<12)
+            {
+                Title="Want to Bunk ?";
+                Text = "Remember to check your attendance..";
+            }
+            else
+            {
+                Title="Update your attendance !!";
+                Text = "Did you marked your attendance today ?";
+            }
+            Log.i("xdfgdc", String.valueOf(currentHour));
+            Intent intent = new Intent(context, AttendanceActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                     .setSmallIcon(R.drawable.logo)
-
-                    .setCategory(NotificationCompat.CATEGORY_REMINDER)
-                    .setVisibility(Notification.VISIBILITY_PUBLIC)
-
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent).build();
-            notification.defaults |= Notification.DEFAULT_SOUND;
-            notification.defaults |= Notification.DEFAULT_VIBRATE;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                builder.setChannelId(CHANNEL_ID);
-            }
-
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel channel = new NotificationChannel(
-                        CHANNEL_ID,
-                        "Attendance",
-                        NotificationManager.IMPORTANCE_HIGH
-                );
-                notificationManager.createNotificationChannel(channel);
-            }
-
-            notificationManager.notify(0, notification);
-
-        } else {
-            Intent notificationIntent = new Intent(context, AttendanceActivity.class);
-
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-            stackBuilder.addParentStack(AttendanceActivity.class);
-            stackBuilder.addNextIntent(notificationIntent);
-
-            PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            Notification.Builder builder = new Notification.Builder(context);
-
-            Notification notification = builder.setContentTitle("Alert!!!")
-                    .setContentText("Did you attend your college today?")
-                    .setTicker("New Attendance Alert!")
-                    .setSmallIcon(R.drawable.logo)
-
-                    .setCategory(NotificationCompat.CATEGORY_REMINDER)
-                    .setVisibility(Notification.VISIBILITY_PUBLIC)
-
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent).build();
-            notification.defaults |= Notification.DEFAULT_SOUND;
-            notification.defaults |= Notification.DEFAULT_VIBRATE;
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                builder.setChannelId(CHANNEL_ID);
-            }
-
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel channel = new NotificationChannel(
-                        CHANNEL_ID,
-                        "Attendance",
-                        NotificationManager.IMPORTANCE_HIGH
-                );
-                notificationManager.createNotificationChannel(channel);
-            }
-
-            notificationManager.notify(0, notification);
+                    .setContentTitle(Title)
+                    .setContentText(Text)
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText(Text))
+                    .setContentIntent(pendingIntent)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            mBuilder.setSound(alarmSound);
+            notificationManager.notify(id, mBuilder.build());
+            id++;
         }
     }
 }
+

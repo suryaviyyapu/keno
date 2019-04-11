@@ -21,9 +21,9 @@ public class Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        TextView tx = (TextView)findViewById(R.id.splash);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
-        tx.setTypeface(custom_font);
+        ImageView imageView = findViewById(R.id.imageView);
+        //Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
+        //tx.setTypeface(custom_font);
 
         int SPLASH_TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {

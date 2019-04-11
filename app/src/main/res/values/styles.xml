@@ -18,4 +18,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Formatting" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

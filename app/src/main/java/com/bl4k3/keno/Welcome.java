@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class Welcome extends Activity {
 
     FirebaseAuth mAuth;
     ProgressBar progressBar;
-    TextView textView;
+
     EditText editTextEmail, editTextPassword;
     Button buttonSignup, buttonLogin;
 
@@ -44,9 +45,9 @@ public class Welcome extends Activity {
         buttonLogin = findViewById(R.id.login);
         buttonSignup = findViewById(R.id.signup);
 
-        TextView tx = (TextView)findViewById(R.id.logo);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
-        tx.setTypeface(custom_font);
+        ImageView imageView = findViewById(R.id.logo);
+        //Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
+        //tx.setTypeface(custom_font);
     }
 
     private boolean checkInternetConnection() {

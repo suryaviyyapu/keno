@@ -46,11 +46,16 @@ public class Settings extends AppCompatActivity {
         newPass = findViewById(R.id.passChange1);
         newPass1 = findViewById(R.id.passChange2);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            String name = user.getDisplayName();
-            username.setText(name);
-        }
+                FirebaseUser
+                user = mAuth.getCurrentUser();
+                if (user!= null){
+                    Log.d(TAG,"USER");
+                    username.setText(user.getDisplayName());
+                }
+
+        //Log.d(TAG,user.getDisplayName());
+            //String name = user.getDisplayName();
+            //username.setText(name);
         deleteAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

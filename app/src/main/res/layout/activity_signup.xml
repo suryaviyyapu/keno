@@ -6,6 +6,7 @@
     android:paddingRight="18dp"
     android:background="#edeeef"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:backgroundTint="@color/blue"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,34 +27,34 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:ems="10"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:id="@+id/Username"
                 android:background="@android:color/transparent"
                 android:padding="14dp"
                 android:hint="@string/username"
-                android:textColorHint="#000" />
+                android:textColorHint="@color/white" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000" />
+                android:background="@color/white" />
             <!--Email-->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:id="@+id/Email"
                 android:background="@android:color/transparent"
                 android:padding="14dp"
                 android:hint="@string/email"
-                android:textColorHint="#000" />
+                android:textColorHint="@color/white" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000" />
+                android:background="@color/white" />
             <!--Mobile Number-->
             <EditText
                 android:layout_width="match_parent"
@@ -63,7 +64,7 @@
                 android:id="@+id/mobile"
                 android:padding="14dp"
                 android:hint="@string/mobile_number"
-                android:textColorHint="#000"
+                android:textColorHint="@color/white"
                 android:background="@android:color/transparent"
                 android:maxLength="10"
                 android:layout_marginTop="4dp"/>
@@ -71,18 +72,18 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000" />
+                android:background="@color/white" />
             <!--Password-->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:id="@+id/Password"
                 android:padding="14dp"
                 android:hint="@string/password"
-                android:textColorHint="#000"
+                android:textColorHint="@color/white"
                 android:background="@android:color/transparent"
                 android:maxLines="1"
                 android:layout_marginTop="4dp"/>
@@ -90,31 +91,31 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000" />
+                android:background="@color/white" />
             <!--Cpassword-->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:id="@+id/CPassword"
                 android:background="@android:color/transparent"
                 android:padding="14dp"
                 android:hint="@string/confirm_password"
-                android:textColorHint="#000" />
+                android:textColorHint="@color/white" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000" />
+                android:background="@color/white" />
             <CheckBox
                 android:id="@+id/checkBox"
                 android:padding="14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Agree to terms and conditions?"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:paddingStart="2dp"
                 android:paddingEnd="2dp"
                 android:checked="false"

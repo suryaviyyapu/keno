@@ -6,6 +6,7 @@
     android:paddingRight="18dp"
     android:background="#edeeef"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:backgroundTint="@color/blue"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,21 +22,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                    <TextView
-                        android:id="@+id/logo"
-                        android:text="@string/app_name"
-                        android:textSize="102sp"
-
-                        android:textAlignment="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                <!--<ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_margin="20dp"
-                    android:src="@drawable/logo"
-                    android:paddingBottom="36dp"/>-->
+                    android:src="@drawable/fulllogo"
+                    android:paddingBottom="36dp"/>
 
 
                 <EditText
@@ -49,25 +43,27 @@
                     android:padding="16dp"
                     android:drawablePadding="16dp"
                     android:hint="@string/email"
+                    android:textColor="@color/white"
                     android:maxLines="1"
-                    android:textColorHint="#000" />
+                    android:textColorHint="#FFF" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#000" />
+                    android:background="#FFF" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
+                    android:textColor="@color/white"
                     android:textStyle="normal"
                     android:id="@+id/editText_Password"
                     android:drawablePadding="16dp"
                     android:padding="16dp"
                     android:hint="Password"
-                    android:textColorHint="#000"
+                    android:textColorHint="#FFF"
                     android:background="@android:color/transparent"
                     android:maxLines="1"
                     android:layout_marginTop="8dp"/>
@@ -75,7 +71,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#000" />
+                    android:background="#FFF" />
 
 
                 <Button
@@ -119,7 +115,7 @@
                     android:gravity="center"
                     android:paddingTop="16dp"
                     android:onClick="forgotPage"
-                    android:textColor="#38393a"/>
+                    android:textColor="#FFF"/>
             </LinearLayout>
             <ProgressBar
                 android:id="@+id/progressBar"

@@ -91,7 +91,7 @@ public void onBackPressed() {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main,menu);
+        menuInflater.inflate(R.menu.keno,menu);
         return true;
     }
 

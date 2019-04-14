@@ -7,6 +7,16 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/changePercentage"
+        android:title="Req. Percentage"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/reminder"
+        android:title="Reminder"
+        android:checkable="true"
+        android:orderInCategory="100"/>
+    <item
         android:id="@+id/about"
         android:orderInCategory="100"
         android:title="About"

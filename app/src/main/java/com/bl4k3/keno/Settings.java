@@ -27,15 +27,11 @@ import java.util.Calendar;
 
 public class Settings extends AppCompatActivity {
     private static final String TAG = "Settings";
-    Switch aSwitch;
     FirebaseAuth mAuth;
     Button deleteAcc, savePass;
     EditText newPass, newPass1;
     TextView username;
     public static final String PREFS = "examplePrefs";
-    PendingIntent notifyIntent;
-    private AlarmManager alarmManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,31 +64,7 @@ public class Settings extends AppCompatActivity {
                 changePass();
             }
         });
-        aSwitch = findViewById(R.id.switch1);
 
-        //saving switch state
-        SharedPreferences sharedPrefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-        aSwitch.setChecked(sharedPrefs.getBoolean("Notifications", true));
-
-        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    notification();
-                    SharedPreferences.Editor editor = getSharedPreferences(PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("Notifications", true);
-                    editor.commit();
-                    Toast.makeText(getApplicationContext(),"ON",Toast.LENGTH_LONG).show();
-                } else if (!isChecked){
-                    //cancel();
-                    SharedPreferences.Editor editor = getSharedPreferences(PREFS, MODE_PRIVATE).edit();
-                    editor.putBoolean("Notifications", false);
-                    editor.commit();
-                    Toast.makeText(getApplicationContext(),"For Now you cannot stop Notifications",Toast.LENGTH_LONG).show();
-                }
-                //end
-            }
-        });
     }
 
     private void changePass() {
@@ -139,20 +111,6 @@ public class Settings extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void notification(){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext()
-                , 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-        cal.set(Calendar.HOUR_OF_DAY, 11);
-        cal.set(Calendar.MINUTE, 0);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, broadcast);
     }
 
     public void deleteAccount() {
@@ -204,13 +162,6 @@ public class Settings extends AppCompatActivity {
         //end of alert box
 
 
-    }
-    public void cancel(){
-        Intent notificationIntent = new Intent(Settings.this, AlarmReceiver.class);
-        PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext()
-                , 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.cancel(notifyIntent);
-        Log.v(TAG,"Cancel Notification");
     }
 
 

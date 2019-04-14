@@ -6,4 +6,5 @@
     <color name="black">#000</color>
     <color name="blue">#025</color>
     <color name="colorAccent">#43a047</color>
+    <color name="hintcolor">#e8eaf6</color>
 </resources>

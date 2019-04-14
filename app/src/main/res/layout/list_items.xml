@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for a single list item in the list of pets -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:longClickable="true"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:text="tv1"
+                android:textColor="@color/colorPrimary"  />
+
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Total classes available for bunk "
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/blue"
+                android:paddingTop="5dp"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/attIncr"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_input_add"
+            android:tag="positive"
+            />
+
+        <ImageButton
+            android:id="@+id/attddecr"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight=".25"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_delete"
+            android:tag="negative" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

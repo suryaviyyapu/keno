@@ -3,22 +3,15 @@ package com.bl4k3.keno;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,20 +24,22 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.android.gms.ads.AdRequest;
 import java.util.Calendar;
 
 
 public class Keno extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-
 
     FirebaseAuth mAuth;
     private SharedPreferences pref;
@@ -71,6 +66,41 @@ public class Keno extends AppCompatActivity
         pendingIntent = PendingIntent.getBroadcast(Keno.this, 0, alarmIntent, 0);
 
 
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(this, "ca-app-pub-8212638041206076~2499605568");
+        //AdView adView = new AdView(this);
+        //adView.setAdSize(AdSize.BANNER);
+        //adView.setAdUnitId("ca-app-pub-8212638041206076/1861115813");
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+            }
+        });
+
         //Set Default percentage
         pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         setDefaultPercentage(75);
@@ -83,7 +113,7 @@ public class Keno extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        listView = (ListView)findViewById(R.id.listview);
+        listView = findViewById(R.id.listview);
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 

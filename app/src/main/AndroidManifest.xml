@@ -18,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <!-- Sample AdMob App ID: ca-app-pub-8212638041206076~2499605568 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8212638041206076~2499605568"/>
 
         <activity android:name=".AboutActivity"/>
         <activity

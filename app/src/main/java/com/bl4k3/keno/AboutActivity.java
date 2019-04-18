@@ -1,10 +1,9 @@
 package com.bl4k3.keno;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,8 +16,8 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        github = (TextView)findViewById(R.id.github);
-        contact = (TextView)findViewById(R.id.contact_us);
+        github = findViewById(R.id.github);
+        contact = findViewById(R.id.contact_us);
     }
 
     public void email_link(View view) {

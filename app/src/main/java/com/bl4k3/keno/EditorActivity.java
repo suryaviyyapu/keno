@@ -15,17 +15,13 @@
  */
 package com.bl4k3.keno;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 /**
@@ -57,9 +53,9 @@ public class EditorActivity extends AppCompatActivity {
         //getLoaderManager().initLoader(EXISTING_PET_LOADER, null, this);
 
         // Find all relevant views that we will need to read user input from
-        mNameEditText = (EditText) findViewById(R.id.subname);
-        mclsatndEditText = (EditText) findViewById(R.id.clsatnd);
-        mTtlclsEditText = (EditText) findViewById(R.id.ttlcls);
+        mNameEditText = findViewById(R.id.subname);
+        mclsatndEditText = findViewById(R.id.clsatnd);
+        mTtlclsEditText = findViewById(R.id.ttlcls);
 
         // intent from main activity
         Intent intent = getIntent();

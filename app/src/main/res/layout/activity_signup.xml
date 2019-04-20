@@ -61,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
+                android:textColor="@color/white"
                 android:id="@+id/mobile"
                 android:padding="14dp"
                 android:hint="@string/mobile_number"

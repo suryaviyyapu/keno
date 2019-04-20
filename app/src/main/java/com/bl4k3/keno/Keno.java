@@ -117,10 +117,15 @@ public class Keno extends AppCompatActivity
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 
+        //Default Fragment to DaashBoard Fragment
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.screen_area, new DashboardFrag()).commit();
+        }
+
     }
 
 
-
+    //Back button Pressed
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -140,25 +145,34 @@ public class Keno extends AppCompatActivity
         return true;
     }
 
-    //Mudu chukalu menu
+    //Top Right menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            //Settings Page
             case R.id.action_settings:
                 startActivity(new Intent(this,Settings.class));
                 break;
+
+                //Change Required Percentgae
             case R.id.changePercentage:
                 changePercentageDialogBox();
                 break;
+
+                //Remainder Option
             case R.id.reminder:
                 changeReminderOption();
                 break;
-                //Logout
+
+                //Logout Option
             case R.id.Logout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(this, Welcome.class));
                 break;
+
+                //About Page
             case R.id.about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
@@ -197,6 +211,8 @@ public class Keno extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    //Change Percentage Method
     void changePercentageDialogBox(){
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(Keno.this);
@@ -227,6 +243,7 @@ public class Keno extends AppCompatActivity
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+    //set Default Percentage
     void setDefaultPercentage(Integer percent){
         if (pref.getBoolean("my_first_time", true)) {
             //the app is being launched for first time, do something
@@ -258,6 +275,7 @@ public class Keno extends AppCompatActivity
             Toast.makeText(this, "Subject Deleted Successfully", Toast.LENGTH_SHORT).show();
         }
     }*/
+    //Remainder's
     public void startAlarm() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -271,11 +289,15 @@ public class Keno extends AppCompatActivity
         manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 1000 * 60 * 60 * 12, pendingIntent);
     }
+
+    //cancel Remainder
     public void cancelAlarm() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
         Toast.makeText(this, "Notifications Canceled", Toast.LENGTH_SHORT).show();
     }
+
+    //Changing remainder State ON or OFF
     void changeReminderOption(){
         if(checkable.isChecked()){
             final AlertDialog.Builder builder = new AlertDialog.Builder(Keno.this);

@@ -2,6 +2,8 @@ package com.bl4k3.keno;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,30 +24,36 @@ import com.google.firebase.auth.FirebaseUser;
 public class Settings extends AppCompatActivity {
     private static final String TAG = "Settings";
     FirebaseAuth mAuth;
-    Button deleteAcc, savePass;
+    Button deleteAcc, savePass, verifyAcc;
     EditText newPass, newPass1;
-    TextView username;
+    Switch aSwitch;
+    TextView username,verifyTextVar;
     public static final String PREFS = "examplePrefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        verifyAcc = findViewById(R.id.verifyButton);
         username = findViewById(R.id.profileName);
+        verifyTextVar = findViewById(R.id.verifyText);
         deleteAcc = findViewById(R.id.deleteAccount);
         savePass = findViewById(R.id.savePassword);
         newPass = findViewById(R.id.passChange1);
         newPass1 = findViewById(R.id.passChange2);
+        aSwitch = findViewById(R.id.notificationSwitch);
         mAuth = FirebaseAuth.getInstance();
                 FirebaseUser
                 user = mAuth.getCurrentUser();
                 if (user!= null){
                     Log.d(TAG,"USER");
                     username.setText(user.getDisplayName());
+                    if (user.isEmailVerified()){
+                        verifyTextVar.setText("Verified Account");
+                        verifyAcc.setEnabled(false);
+                        verifyAcc.setVisibility(View.GONE);
+                        //verifyAcc.getBackground().setColorFilter(0x00FF0000, PorterDuff.Mode.MULTIPLY);
+                    }
                 }
-
-        //Log.d(TAG,user.getDisplayName());
-            //String name = user.getDisplayName();
-            //username.setText(name);
         deleteAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +64,12 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changePass();
+            }
+        });
+        verifyAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verify();
             }
         });
 
@@ -79,15 +94,18 @@ public class Settings extends AppCompatActivity {
         if (pass.length() < 8 || pass.length() > 15){
             newPass.setError("Password must be at least 8 characters");
             newPass.requestFocus();
+            return;
         }
 
-        if (pass1.length() < 8 || pass.length() > 15) {
+        if (pass1.length() < 8 || pass1.length() > 15) {
             newPass1.setError("Password must be at least 8 characters");
             newPass1.requestFocus();
+            return;
         }
         if(!pass.matches(regexp)){
             newPass.setError("Password is not strong");
             newPass.requestFocus();
+            return;
         }
         if(!pass1.equals(pass)){
             Toast.makeText(getApplicationContext(),"Password Doesn\'t match",Toast.LENGTH_LONG).show();
@@ -156,7 +174,20 @@ public class Settings extends AppCompatActivity {
 
 
     }
-
+    public void verify() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(),"Email sent",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Settings.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+    }
 
     @Override
     protected void onStart() {

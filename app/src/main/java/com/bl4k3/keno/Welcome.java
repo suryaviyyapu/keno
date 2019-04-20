@@ -1,6 +1,7 @@
 package com.bl4k3.keno;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -42,14 +43,13 @@ public class Welcome extends Activity {
         buttonSignup = findViewById(R.id.signup);
 
         ImageView imageView = findViewById(R.id.logo);
-        //Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/HandStrike.ttf");
-        //tx.setTypeface(custom_font);
     }
 
     private boolean checkInternetConnection() {
         // get Connectivity Manager object to check connection
+        getBaseContext();
         ConnectivityManager connec
-                =(ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+                =(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
 
         // Check for network connections
         if ( connec.getNetworkInfo(0).getState() ==
@@ -105,19 +105,12 @@ public class Welcome extends Activity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    if(user != null)
-                    if(!user.isEmailVerified()){
-                        startActivity(new Intent(Welcome.this,Confirmation.class));
-
-                    } else if(user.isEmailVerified()) {
                         finish();
                         Intent intent = new Intent(Welcome.this, Keno.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        //notification();
                         startActivity(intent);
-                    }
-                } else {
+                }
+                else {
                     editTextPassword.setText("");
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -137,20 +130,14 @@ public class Welcome extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        //checkInternetConenction();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
-            if(!user.isEmailVerified()) {
-              startActivity(new Intent(Welcome.this, Confirmation.class));
-            } else if(user.isEmailVerified()) {
                 finish();
                 Intent intent = new Intent(Welcome.this, Keno.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                //startActivity(new Intent(this,Keno.class));
             }
         }
-    }
 
     @Override
     public void onBackPressed() {

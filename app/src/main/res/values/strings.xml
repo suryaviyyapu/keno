@@ -109,4 +109,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="notes_empty">No Notes Found</string>
+    <string name="what_s_new">What\'s new?</string>
 </resources>

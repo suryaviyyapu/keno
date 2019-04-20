@@ -30,14 +30,6 @@
         android:layout_margin="20dp"
         >
 
-        <TextView
-            android:id="@+id/student_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/intro_message"
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-
     </LinearLayout>
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

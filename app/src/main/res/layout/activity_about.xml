@@ -104,6 +104,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/Donate"
+            android:layout_marginStart="8dp"
+            style="@style/Formatting"
+            android:onClick="donate"/>
 
     </LinearLayout>
 
@@ -128,8 +135,7 @@
             android:layout_marginStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/Donate"
-            android:onClick="donate"/>
+            android:text="@string/what_s_new" />
 
     </LinearLayout>
 

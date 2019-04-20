@@ -1,123 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".Settings">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/ll1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Change Password"
-        android:textColor="#000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteAccount"
-        app:layout_constraintVertical_bias="0.165" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Account Confirmation"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/verifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not Verified, Click below to receive Email"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            />
+        <Button
+            android:id="@+id/verifyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verify"
+            android:background="#F00"
+            android:layout_gravity="center"/>
 
-    <EditText
-        android:id="@+id/passChange1"
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="280dp"
-        android:hint="New Password"
-        android:inputType="textPassword"
-        android:maxLength="16"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.308" />
-
-    <EditText
-        android:id="@+id/passChange2"
-        android:inputType="textPassword"
-        android:maxLength="16"
-        android:maxLines="1"
+        android:layout_below="@+id/ll1"
+        android:orientation="vertical">
+        <View
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#9e9e9e" />
+        <TextView
+            android:paddingTop="20dp"
+            android:id="@+id/profileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="Keno"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Change Password"
+            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            android:textSize="20sp" />
+        <EditText
+            android:focusable="false"
+            android:id="@+id/passChange1"
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:inputType="textPassword"
+            android:hint="New Password"/>
+        <EditText
+            android:id="@+id/passChange2"
+            android:focusable="false"
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:inputType="textPassword"
+            android:hint="Confirm Password"/>
+        <Button
+            android:id="@+id/savePassword"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_below="@id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Confirm password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passChange1"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/savePassword"
-        android:layout_width="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#9e9e9e" />
+        <Switch
+            android:id="@+id/notificationSwitch"
+            android:paddingTop="20dp"
+            android:textSize="18sp"
+            android:textAlignment="gravity"
+            android:text="Notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_below="@id/ll3"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Save Password"
-        android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:background="@drawable/green"/>
-
-
-    <Button
-        android:id="@+id/deleteAccount"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/error"
-        android:padding="16dp"
-        android:text="Delete Account"
-        android:textAllCaps="false"
-        android:textColor="#edeeef"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
-
-    <TextView
-        android:id="@+id/profileName"
-        android:layout_width="130dp"
-        android:layout_height="52dp"
-        android:text="@string/app_name"
-        android:textSize="28sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toEndOf="@+id/deleteAccount"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.070" />
-
-</android.support.constraint.ConstraintLayout>
+        android:orientation="vertical">
+        <View
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#9e9e9e" />
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete Account?"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Note: This cannot be undone"/>
+        <Button
+            android:id="@+id/deleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Account"
+            android:textAllCaps="true"
+            android:textStyle="normal"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="18sp"
+            android:background="@drawable/button_shape2"
+            android:textColor="#FFF"
+            android:padding="16dp"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="9dp"/>
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

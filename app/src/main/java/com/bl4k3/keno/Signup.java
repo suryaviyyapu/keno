@@ -28,13 +28,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Signup extends AppCompatActivity {
     ProgressBar progressBar;
-    private final static String TAG = "signup";
+    private static final String TAG = "Signup ";
     Button signup,login;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     EditText editTextEmail, editTextUsername, editTextPhone, editTextCPassword, editTextPassword;
     CheckBox checkBox;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +58,7 @@ public class Signup extends AppCompatActivity {
 
 
     private void registerUser() {
+        final int val = 0;
         final String username = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String mobile = editTextPhone.getText().toString().trim();
@@ -66,8 +66,8 @@ public class Signup extends AppCompatActivity {
         String regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,15}$";
         String cpassword = editTextCPassword.getText().toString().trim();
 
-        if(!password.matches(regexp)){
-            editTextPassword.setError("Weak Password must contain Numbers, Upper and Lower case letters");
+        if (!password.matches(regexp)) {
+            editTextPassword.setError("Password must contain Numbers, Upper and Lower case letters");
             editTextPassword.requestFocus();
             return;
         }
@@ -83,59 +83,76 @@ public class Signup extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            String id = mAuth.getUid();
                             if(task.isSuccessful()){
                                 FirebaseUser fbUser = mAuth.getCurrentUser();
                                 UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(username).build();
-                                Log.d(TAG,"Done");
+                                Log.d(TAG,"Done Signup");
                                 fbUser.updateProfile(profileChangeRequest);
-                                CollectionReference dbusers = db.collection("Users");
+                                //CollectionReference dbusers = db.collection("Users");
                                 final User user= new User(
                                         username,
                                         email,
                                         password,
-                                        mobile
+                                        mobile,
+                                        val
                                 );
-                                dbusers.add(user)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                getinfo();
-                                                progressBar.setVisibility(View.GONE);
-                                                Toast.makeText(Signup.this, "Signup Successful", Toast.LENGTH_LONG).show();
-                                                finish();
-                                                startActivity(new Intent(Signup.this,Confirmation.class));
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                progressBar.setVisibility(View.GONE);
-                                                Toast.makeText(Signup.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                            }
-                                        });
+                                if(id != null)
+                                db.collection("Users").document(id).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.w(TAG,"Success to db");
+                                            //verify();
+                                        } else {
+                                            Log.w(TAG, "Failed. Check log. DB");
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG,"Failed to add data "+ e.getMessage());
+                                    }
+                                });
+                                progressBar.setVisibility(View.GONE);
+                                FirebaseAuth.getInstance().signOut();
+                                finish();
+                                Intent intent = new Intent(Signup.this, Welcome.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(),"Signup Successful",Toast.LENGTH_LONG).show();
                             }
+
                         }
-                    });
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w(TAG,e.getMessage());
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
         }
     }
-
-    private void getinfo() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String username = editTextUsername.getText().toString().trim();
-        //Name and other info setting to account
-        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                .setDisplayName(username).build();
-        if(user!=null)
-            user.updateProfile(profileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
+    /*public void verify() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Successful getUser",Toast.LENGTH_LONG).show();
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Signup.this, "Verification Email sent. Confirm and login", Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        finish();
+                        Intent intent = new Intent(Signup.this, Welcome.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Signup.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
-    }
+        }*/
 
 
     private boolean validateInputs(String username, String email, String mobile, String password) {

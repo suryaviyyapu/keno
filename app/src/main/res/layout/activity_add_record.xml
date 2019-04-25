@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFE"
+    android:padding="20dp" >
+
+    <EditText
+        android:id="@+id/Name_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColorHint="#000"
+        android:hint="Name of the subject">
+
+        <requestFocus />
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/totalHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:maxLength="2"
+        android:shadowColor="@color/colorAccent"
+        android:hint="Total conducted"
+        android:textColorHint="#000"
+        android:inputType="number">
+    </EditText>
+
+    <EditText
+        android:id="@+id/totalAttended"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Total Attended"
+        android:inputType="number"
+        android:textColorHint="#000"
+        android:maxLength="2">
+    </EditText>
+
+
+    <Button
+        android:id="@+id/add_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        android:text="Add" />
+
+</LinearLayout>

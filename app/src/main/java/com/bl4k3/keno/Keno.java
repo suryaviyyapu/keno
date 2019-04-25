@@ -41,11 +41,10 @@ import java.util.Calendar;
 public class Keno extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    FirebaseAuth mAuth;
+    AdView mAdView;
+    AdRequest adRequest;
     private SharedPreferences pref;
-    ListView listView;
     MenuItem checkable;
-    private static final int SUB_LOADER = 0;
     private PendingIntent pendingIntent;
 
 
@@ -66,13 +65,10 @@ public class Keno extends AppCompatActivity
         pendingIntent = PendingIntent.getBroadcast(Keno.this, 0, alarmIntent, 0);
 
 
-        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, "ca-app-pub-8212638041206076~2499605568");
-        //AdView adView = new AdView(this);
-        //adView.setAdSize(AdSize.BANNER);
-        //adView.setAdUnitId("ca-app-pub-8212638041206076/1861115813");
-        AdView mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+
+        mAdView = findViewById(R.id.adView);
+        adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener(){
             @Override
@@ -113,11 +109,7 @@ public class Keno extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        listView = findViewById(R.id.listview);
-        View emptyView = findViewById(R.id.empty_view);
-        listView.setEmptyView(emptyView);
-
-        //Default Fragment to DaashBoard Fragment
+        //Default Fragment to DashBoard Fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.screen_area, new DashboardFrag()).commit();
         }
@@ -148,6 +140,7 @@ public class Keno extends AppCompatActivity
     //Top Right menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
 
             //Settings Page
@@ -155,7 +148,7 @@ public class Keno extends AppCompatActivity
                 startActivity(new Intent(this,Settings.class));
                 break;
 
-                //Change Required Percentgae
+                //Change Required Percentage
             case R.id.changePercentage:
                 changePercentageDialogBox();
                 break;
@@ -176,6 +169,7 @@ public class Keno extends AppCompatActivity
             case R.id.about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -294,7 +288,7 @@ public class Keno extends AppCompatActivity
     public void cancelAlarm() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
-        Toast.makeText(this, "Notifications Canceled", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Notifications Cancelled", Toast.LENGTH_SHORT).show();
     }
 
     //Changing remainder State ON or OFF

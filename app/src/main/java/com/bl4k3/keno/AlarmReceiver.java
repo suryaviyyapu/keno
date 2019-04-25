@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent i) {
         Calendar rightNow = Calendar.getInstance();
         int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
-        Log.i("curent hour", String.valueOf(currentHour));
+        Log.i("current hour", String.valueOf(currentHour));
         if((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)  ){
             if(currentHour<12)
             {

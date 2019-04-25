@@ -59,7 +59,7 @@ public class Welcome extends Activity {
                 connec.getNetworkInfo(1).getState() ==
                         android.net.NetworkInfo.State.CONNECTING ||
                 connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
-            Toast.makeText(this, " Connection Established ", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, " Connection Established ", Toast.LENGTH_LONG).show();
             return true;
         }else if (
                 connec.getNetworkInfo(0).getState() ==

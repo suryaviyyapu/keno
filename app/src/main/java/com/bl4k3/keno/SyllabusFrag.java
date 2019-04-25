@@ -21,11 +21,5 @@ public class SyllabusFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.hello).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"Syllabus",Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

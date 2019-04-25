@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE " />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -18,12 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".AttendanceActivity"></activity>
         <!-- Sample AdMob App ID: ca-app-pub-8212638041206076~2499605568 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8212638041206076~2499605568"/>
+            android:value="ca-app-pub-8212638041206076~2499605568" />
 
-        <activity android:name=".AboutActivity"/>
+        <activity android:name=".AboutActivity" />
         <activity
             android:name=".Splash"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
@@ -43,7 +45,7 @@
         </activity>
         <activity
             android:name=".Welcome"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Signup"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -56,10 +58,11 @@
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".FileUpload" />
-        <activity android:name=".EditorActivity"/>
-        <receiver android:name="com.bl4k3.keno.AlarmReceiver">
+        <activity android:name=".EditorActivity" />
+
+        <receiver android:name=".AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
@@ -68,9 +71,10 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".AttendanceActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".AddSubject"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".ModifySubject"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
 
         <meta-data
             android:name="preloaded_fonts"

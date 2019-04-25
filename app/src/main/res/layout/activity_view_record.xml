@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="6dp"
+        android:padding="3dp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/SubjectName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="tv1"
+        android:textColor="@color/colorPrimary"
+        android:maxLines="1"
+        android:padding="3dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/conduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="13dp"
+        android:text="Conducted"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/TotalConducted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SubjectName"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/conduct"
+        android:maxLines="1"
+        android:padding="3dp"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/id"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_toRightOf="@id/TotalAttended"
+        android:gravity="center"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/attend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conduct"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="2dp"
+        android:text="Attended"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/TotalAttended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TotalConducted"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/attend"
+        android:maxLines="1"
+        android:padding="3dp"
+        android:textSize="17sp" />
+
+
+
+</RelativeLayout>

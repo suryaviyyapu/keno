@@ -84,7 +84,4 @@
         android:maxLines="1"
         android:padding="3dp"
         android:textSize="17sp" />
-
-
-
 </RelativeLayout>

@@ -1,4 +1,5 @@
 <resources>
+    <string name="banner_ad_unit_id">ca-app-pub-8212638041206076/9656479813</string>
     <string name="app_name">Keno</string>
     <string name="title_keno">Keno</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -8,7 +9,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_keno">Keno</string>
-
 
     <string name="About">Keno is an Attendance Manager that allows you to manage your attendance effectively and easily . </string>
     <string name="Github">Fork us on GitHub</string>

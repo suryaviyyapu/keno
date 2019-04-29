@@ -12,7 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class AttendanceActivity extends AppCompatActivity {
+    FirebaseAuth mAuth;
     final String[] from = new String[] { DatabaseHelper._ID,
             DatabaseHelper.SUBJECTNAME, DatabaseHelper.TOTALCONDUCTED, DatabaseHelper.TOTALATTENDED};
 
@@ -57,6 +61,17 @@ public class AttendanceActivity extends AppCompatActivity {
                 startActivity(modify_intent);
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            finish();
+            Intent intent = new Intent(AttendanceActivity.this, Welcome.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -13,6 +13,7 @@ public class ModifySubject extends Activity implements OnClickListener {
     String Tag = "ModifySubjectActivity";
     public String subjectName, totalconducted, totalattended;
     private long _id;
+    int conduct, attended;
 
     private DBManager dbManager;
 
@@ -47,6 +48,7 @@ public class ModifySubject extends Activity implements OnClickListener {
 
         presentBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
+        absentBtn.setOnClickListener(this);
 
     }
 
@@ -55,36 +57,24 @@ public class ModifySubject extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_present:
-                int conduct = Integer.parseInt(totalconducted);
-                int attended = Integer.parseInt(totalattended);
+                conduct = Integer.parseInt(totalconducted);
+                attended = Integer.parseInt(totalattended);
                 String present = String.valueOf(attended+1);
                 String total = String.valueOf(conduct+1);
-                /*String name = NameText.getText().toString();
-                //String email = Subject_Name.getText().toString();
-                String pass = PasswordText.getText().toString();
-                if(name.isEmpty()){
-                    NameText.setError("Provider name required");
-                    NameText.requestFocus();
-                    break;
-                }
-                /*if (email.isEmpty()){
-                    Subject_Name.setError("Email is required");
-                    Subject_Name.requestFocus();
-                    break;
-                }
-                if (pass.isEmpty()){
-                    PasswordText.setError("Password required");
-                    PasswordText.requestFocus();
-                    break;
-                }
-               // dbManager.insert(name, email, pass);*/
-
                 dbManager.update(_id, subjectName, total, present);
                 this.returnHome();
                 break;
 
             case R.id.btn_delete:
                 dbManager.delete(_id);
+                this.returnHome();
+                break;
+            case R.id.btn_absent:
+                conduct = Integer.parseInt(totalconducted);
+                attended = Integer.parseInt(totalattended);
+                total = String.valueOf(conduct+1);
+                present = String.valueOf(attended);
+                dbManager.update(_id, subjectName,total,present);
                 this.returnHome();
                 break;
         }

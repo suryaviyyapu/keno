@@ -35,12 +35,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.ads.AdRequest;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Calendar;
 
 
 public class Keno extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
-
+    FirebaseAuth mAuth;
     AdView mAdView;
     AdRequest adRequest;
     private SharedPreferences pref;
@@ -55,6 +57,7 @@ public class Keno extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mAuth = FirebaseAuth.getInstance();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -113,7 +116,16 @@ public class Keno extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.screen_area, new DashboardFrag()).commit();
         }
-
+        //Check For User Registration
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null){
+            finish();
+            Intent intent = new Intent(Keno.this, Welcome.class);
+            Toast.makeText(getApplicationContext(),"Please login",Toast.LENGTH_LONG).show();
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else {
+        }
     }
 
 
@@ -181,14 +193,11 @@ public class Keno extends AppCompatActivity
 
         if (id == R.id.Dashboard) {
             fragment = new DashboardFrag();
-        } else if (id == R.id.Tasks) {
-            fragment = new TaskFrag();
         } else if (id == R.id.TimeTable) {
-            fragment = new TimeTableFrag();
+            startActivity(new Intent(this,Timetable.class));
+            //fragment = new TimeTableFrag();
         } else if (id == R.id.Notes) {
             fragment = new NotesFrag();
-        } else if (id == R.id.Syllabus) {
-            fragment = new SyllabusFrag();
         } else if (id == R.id.Tools){
             fragment = new ToolsFrag();
         }
@@ -241,7 +250,7 @@ public class Keno extends AppCompatActivity
     void setDefaultPercentage(Integer percent){
         if (pref.getBoolean("my_first_time", true)) {
             //the app is being launched for first time, do something
-            Log.d("Comments", "First time");
+            Log.d("Percentage", "First time");
 
             // first time task
             pref.edit().putInt("requiredPercentage", percent).apply();
@@ -276,7 +285,7 @@ public class Keno extends AppCompatActivity
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 9);
-        calendar.set(Calendar.MINUTE, 30);
+        calendar.set(Calendar.MINUTE, 10);
         calendar.set(Calendar.SECOND, 0);
 
         /* Repeating on every 20 minutes interval */

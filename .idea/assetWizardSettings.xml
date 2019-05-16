@@ -45,17 +45,6 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
-                                      <entry key="backgroundImage">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="trimmed" value="true" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
                                       <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
@@ -84,7 +73,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="56" />
+                                                <entry key="scalingPercent" value="65" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -94,8 +83,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\Dell\Downloads\Scorecard-48-96-480px\icons8-scorecard-480.png" />
-                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="002255" />
+                                      <entry key="foregroundImage" value="C:\Users\Dell\Downloads\favicon_io (2)\android-chrome-192x192.png" />
+                                      <entry key="previewDensity" value="HIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -161,11 +152,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

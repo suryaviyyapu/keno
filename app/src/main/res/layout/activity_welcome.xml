@@ -39,14 +39,15 @@
                     android:background="@android:color/transparent"
                     android:drawablePadding="16dp"
                     android:ems="10"
+                    android:fontFamily="monospace"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:padding="16dp"
-                    android:textAlignment="textStart"
                     android:textColor="@color/white"
                     android:textColorHint="#FFF"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:typeface="monospace" />
 
                 <View
                     android:layout_width="match_parent"
@@ -61,13 +62,15 @@
                     android:background="@android:color/transparent"
                     android:drawablePadding="16dp"
                     android:ems="10"
-                    android:hint="Password"
+                    android:fontFamily="monospace"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:padding="16dp"
                     android:textColor="@color/white"
                     android:textColorHint="#FFF"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:typeface="monospace" />
 
                 <View
                     android:layout_width="match_parent"

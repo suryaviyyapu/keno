@@ -20,8 +20,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent i) {
         Calendar rightNow = Calendar.getInstance();
         int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
-        Log.i("current hour", String.valueOf(currentHour));
-        if((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)  ){
+        Log.i("Alarm Receiver", String.valueOf(currentHour));
+        if(((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)) && ((Intent.ACTION_BOOT_COMPLETED).equals(i.getAction()))){
             if(currentHour<12)
             {
                 Title="Want to Bunk ?";
@@ -30,10 +30,10 @@ public class AlarmReceiver extends BroadcastReceiver {
             else
             {
                 Title="Update your attendance !!";
-                Text = "Did you marked your attendance today ?";
+                Text = "Did you mark your attendance today ?";
             }
             Log.i("AlarmReceiver", String.valueOf(currentHour));
-            Intent intent = new Intent(context, AttendanceActivity.class);
+            Intent intent = new Intent(context, Keno.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
@@ -49,6 +49,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             mBuilder.setSound(alarmSound);
             notificationManager.notify(id, mBuilder.build());
             id++;
+            context.startService(intent);
         }
     }
 }

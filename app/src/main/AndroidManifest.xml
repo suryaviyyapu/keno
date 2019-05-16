@@ -19,8 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AttendanceActivity"></activity>
-        <!-- Sample AdMob App ID: ca-app-pub-8212638041206076~2499605568 -->
+        <activity android:name=".Tools" />
+        <activity android:name=".Notes" />
+        <activity android:name=".Timetable" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".AttendanceActivity" /> <!-- Sample AdMob App ID: ca-app-pub-8212638041206076~2499605568 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8212638041206076~2499605568" />
@@ -39,9 +42,6 @@
             android:name=".Keno"
             android:label="@string/title_keno"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Welcome"
@@ -53,14 +53,13 @@
             android:name=".Forgot"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Details"
+            android:name=".ProfileSettings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".FileUpload" />
-        <activity android:name=".EditorActivity" />
 
         <receiver android:name=".AlarmReceiver">
             <intent-filter>
@@ -71,9 +70,11 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".AddSubject"
+        <activity
+            android:name=".AddSubject"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
-        <activity android:name=".ModifySubject"
+        <activity
+            android:name=".ModifySubject"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
 
         <meta-data

@@ -2,49 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
-
-    <ImageView
-        android:layout_alignParentTop="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/logo"
-        android:id="@+id/icon1"/>
-
-    <TextView
-        android:layout_below="@+id/icon1"
+    android:layout_margin="10dp"
+    android:id="@+id/rl1">
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:lineSpacingExtra="5dp"
-        android:text="@string/About"
-        android:textSize="18sp"
-        android:theme="@style/Formatting" />
+        android:layout_height="400dp">
+        <ImageView
+            android:layout_alignParentTop="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/logo"
+            android:id="@+id/icon1"/>
 
-    <View
-        android:layout_above="@+id/version"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#cdc9c9" />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_below="@+id/icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:lineSpacingExtra="5dp"
+            android:text="@string/About"
+            android:textSize="18sp"
+            android:theme="@style/Formatting" />
 
-    <TextView
-        android:layout_above="@+id/contact"
-        android:id="@+id/version"
-        style="@style/Formatting"
-        android:layout_marginStart="8dp"
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center_vertical"
-        android:text="@string/version" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@+id/contact">
+        <TextView
+            android:id="@+id/version"
+            style="@style/Formatting"
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="@string/version" />
+
+    </LinearLayout>
 
     <View
-        android:id="@+id/line5"
         android:layout_above="@+id/contact"
+        android:id="@+id/line5"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="#cdc9c9" />
+
 
     <LinearLayout
         android:id="@+id/contact"

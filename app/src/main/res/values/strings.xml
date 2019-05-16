@@ -19,7 +19,7 @@
     <string name="classes_attended">Classes Attended</string>
     <string name="total_classes">Total Classes</string>
     <string name="Contact">Contact Us</string>
-    <string name="version">Version 0.0.3-beta</string>
+    <string name="version">Version 0.0.4-beta</string>
     <string name="delete">Yes</string>
     <string name="nosorry">No</string>
     <string name="AlertMessage">Are you sure you want to delete this subject ?</string>

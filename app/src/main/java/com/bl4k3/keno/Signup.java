@@ -45,9 +45,9 @@ public class Signup extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
         //TODO checkBox
         //checkBoxPass = findViewById(R.id.passcheck);
-        editTextEmail = findViewById(R.id.TotalConducted);
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextPhone = findViewById(R.id.mobile);
-        editTextPassword = findViewById(R.id.TotalAttended);
+        editTextPassword = findViewById(R.id.editText_Password);
         editTextCPassword = findViewById(R.id.CPassword);
         progressBar = findViewById(R.id.progressBar);
 
@@ -55,17 +55,6 @@ public class Signup extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-        checkBoxPass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    editTextPassword.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-                } else {
-                    editTextPassword.setInputType(129);
-                }
-            }
-        });
 
     }
 

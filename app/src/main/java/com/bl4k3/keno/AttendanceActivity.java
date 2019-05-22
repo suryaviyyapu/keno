@@ -19,9 +19,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class AttendanceActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     final String[] from = new String[] { DatabaseHelper._ID,
-            DatabaseHelper.SUBJECTNAME, DatabaseHelper.TOTALCONDUCTED, DatabaseHelper.TOTALATTENDED};
+            DatabaseHelper.SUBJECTNAME, DatabaseHelper.TOTALCONDUCTED, DatabaseHelper.TOTALATTENDED, DatabaseHelper.PERCENTAGE};
 
-    final int[] to = new int[] { R.id.id, R.id.SubjectName, R.id.TotalConducted, R.id.TotalAttended};
+    final int[] to = new int[] { R.id.id, R.id.SubjectName, R.id.TotalConducted, R.id.TotalAttended, R.id.percentDisplay};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +48,20 @@ public class AttendanceActivity extends AppCompatActivity {
                 TextView name = (TextView) view.findViewById(R.id.SubjectName);
                 TextView email = (TextView) view.findViewById(R.id.TotalConducted);
                 TextView password = (TextView) view.findViewById(R.id.TotalAttended);
+                TextView percent = (TextView) view.findViewById(R.id.percentDisplay);
 
                 String id = idTextView.getText().toString();
                 String SubjectN = name.getText().toString();
                 String TotalC = email.getText().toString();
                 String TotalA = password.getText().toString();
+                String attendPercent = percent.getText().toString();
 
                 Intent modify_intent = new Intent(getApplicationContext(), ModifySubject.class);
                 modify_intent.putExtra("SubjectName", SubjectN);
                 modify_intent.putExtra("TotalC", TotalC);
                 modify_intent.putExtra("TotalA", TotalA);
                 modify_intent.putExtra("id", id);
+                modify_intent.putExtra("percent",attendPercent);
 
                 startActivity(modify_intent);
             }

@@ -21,7 +21,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Calendar rightNow = Calendar.getInstance();
         int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
         Log.i("Alarm Receiver", String.valueOf(currentHour));
-        if(((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)) && ((Intent.ACTION_BOOT_COMPLETED).equals(i.getAction()))){
+        if(((currentHour>=7 && currentHour<=11) ||(currentHour>=19 && currentHour<=22)) || ((Intent.ACTION_BOOT_COMPLETED).equals(i.getAction()))){
             if(currentHour<12)
             {
                 Title="Want to Bunk ?";

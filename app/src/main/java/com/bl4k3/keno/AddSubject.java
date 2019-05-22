@@ -25,8 +25,8 @@ public class AddSubject extends Activity implements OnClickListener {
         setContentView(R.layout.activity_add_record);
 
         subject_name_EditText = findViewById(R.id.Name_Text);
-        total_conducted_EditText = findViewById(R.id.totalHours);
-        total_attended_EditText =  findViewById(R.id.totalAttended);
+        total_conducted_EditText = findViewById(R.id.TotalConducted);
+        total_attended_EditText =  findViewById(R.id.TotalAttended);
         Button addSub = findViewById(R.id.add_subject);
 
         dbManager = new DBManager(this);
@@ -40,24 +40,29 @@ public class AddSubject extends Activity implements OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.add_subject) {
             final String subject_name = subject_name_EditText.getText().toString();
-            final String total_hours = total_conducted_EditText.getText().toString();
-            final String total_conducted = total_attended_EditText.getText().toString();
+            final String total_conducted = total_conducted_EditText.getText().toString();
+            final String total_attended = total_attended_EditText.getText().toString();
+            String percent = "0";
             if (subject_name.isEmpty()) {
                 subject_name_EditText.setError("Subject name is required");
                 subject_name_EditText.requestFocus();
                 return;
             }
-            if (total_hours.isEmpty()) {
+            if (total_conducted.isEmpty()) {
                 total_conducted_EditText.setError("Total hours is required");
                 total_conducted_EditText.requestFocus();
                 return;
             }
-            if (total_conducted.isEmpty()) {
+            if (total_attended.isEmpty()) {
                 total_attended_EditText.setError("Total attended hours required");
                 total_attended_EditText.requestFocus();
                 return;
             }
-            dbManager.insert(subject_name, total_hours, total_conducted);
+            double tc = Integer.parseInt(total_conducted);
+            double ta = Integer.parseInt(total_attended);
+            Toast.makeText(getApplicationContext(),"tc is "+tc+"ta is "+ ta,Toast.LENGTH_SHORT).show();
+            percent = String.valueOf((ta/tc)*100);
+            dbManager.insert(subject_name, total_conducted, total_attended, percent);
             Log.i(Tag,"Inserted into DB");
             Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_LONG).show();
                 Intent main = new Intent(AddSubject.this, AttendanceActivity.class)

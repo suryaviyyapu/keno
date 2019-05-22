@@ -28,28 +28,30 @@ public class DBManager {
         dbHelper.close();
     }
 
-    public void insert(String name, String email, String pass) {
+    public void insert(String name, String email, String pass, String percentage) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.SUBJECTNAME, name);
         contentValue.put(DatabaseHelper.TOTALCONDUCTED, email);
         contentValue.put(DatabaseHelper.TOTALATTENDED, pass);
+        contentValue.put(DatabaseHelper.PERCENTAGE,percentage);
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
     }
 
     public Cursor fetch() {
-        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.SUBJECTNAME, DatabaseHelper.TOTALCONDUCTED, DatabaseHelper.TOTALATTENDED};
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
+        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.SUBJECTNAME, DatabaseHelper.TOTALCONDUCTED, DatabaseHelper.TOTALATTENDED, DatabaseHelper.PERCENTAGE};
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
     }
 
-    public int update(long _id, String name, String email, String pass) {
+    public int update(long _id, String name, String email, String pass, String percentage) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.SUBJECTNAME, name);
         contentValues.put(DatabaseHelper.TOTALCONDUCTED, email);
         contentValues.put(DatabaseHelper.TOTALATTENDED, pass);
+        contentValues.put(DatabaseHelper.PERCENTAGE,percentage);
         int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
         return i;
     }

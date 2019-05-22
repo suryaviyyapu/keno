@@ -22,6 +22,15 @@
             android:icon="@drawable/tools"
             android:title="Tools"/>
 
+        <item
+            android:id="@+id/action_settings"
+            android:title="Settings"
+            android:icon="@drawable/syllabus"/>
+        <item
+            android:id="@+id/support"
+            android:title="support"
+            android:icon="@drawable/account"/>
+
 
     </group>
 

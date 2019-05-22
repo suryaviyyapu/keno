@@ -11,7 +11,7 @@ public class ModifySubject extends Activity implements OnClickListener {
 
     private TextView Subject_Name, totalConducted, totalAttended;
     String Tag = "ModifySubjectActivity";
-    public String subjectName, totalconducted, totalattended;
+    public String subjectName, totalconducted, totalattended, percent;
     private long _id;
     int conduct, attended;
 
@@ -61,7 +61,9 @@ public class ModifySubject extends Activity implements OnClickListener {
                 attended = Integer.parseInt(totalattended);
                 String present = String.valueOf(attended+1);
                 String total = String.valueOf(conduct+1);
-                dbManager.update(_id, subjectName, total, present);
+                percent = String.valueOf((attended/conduct)*100);
+
+                dbManager.update(_id, subjectName, total, present, percent);
                 this.returnHome();
                 break;
 
@@ -74,7 +76,8 @@ public class ModifySubject extends Activity implements OnClickListener {
                 attended = Integer.parseInt(totalattended);
                 total = String.valueOf(conduct+1);
                 present = String.valueOf(attended);
-                dbManager.update(_id, subjectName,total,present);
+                percent = String.valueOf((attended/conduct)*100);
+                dbManager.update(_id, subjectName,total,present, percent);
                 this.returnHome();
                 break;
         }

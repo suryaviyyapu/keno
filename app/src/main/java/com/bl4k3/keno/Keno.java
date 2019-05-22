@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -155,11 +156,6 @@ public class Keno extends AppCompatActivity
 
         switch (item.getItemId()) {
 
-            //Settings Page
-            case R.id.action_settings:
-                startActivity(new Intent(this,Settings.class));
-                break;
-
                 //Change Required Percentage
             case R.id.changePercentage:
                 changePercentageDialogBox();
@@ -195,12 +191,18 @@ public class Keno extends AppCompatActivity
             fragment = new DashboardFrag();
         } else if (id == R.id.TimeTable) {
             startActivity(new Intent(this,Timetable.class));
-            //fragment = new TimeTableFrag();
         } else if (id == R.id.Notes) {
-            fragment = new NotesFrag();
+            startActivity(new Intent(this, ListActivity.class));
         } else if (id == R.id.Tools){
-            fragment = new ToolsFrag();
-        }
+            startActivity(new Intent(this,Tools.class));
+        } else if (id == R.id.action_settings){
+            startActivity(new Intent(this,Settings.class));
+        } else if(id == R.id.support){
+                 Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"vnsd@protonmail.com"});
+                startActivity(intent);
+            }
 //for null pointer exception
         if(fragment != null){
             FragmentManager fragmentManager = getSupportFragmentManager();

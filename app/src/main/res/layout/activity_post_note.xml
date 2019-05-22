@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bl4k3.keno.PostNoteActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+
+    <EditText
+        android:layout_margin="12dp"
+        android:id="@+id/titlePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Title"
+        />
+
+    <EditText
+        android:layout_margin="12dp"
+        android:id="@+id/messagePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Message"
+        android:minLines="2"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:padding="4dp"
+        android:layout_margin="12dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        >
+
+        <RadioButton
+            android:checked="true"
+            android:text="Light"
+            android:id="@+id/radioLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/radioMedium"
+            android:text="Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:text="Important"
+            android:id="@+id/radioImportant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+    <Button
+        android:layout_margin="12dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/buttonPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        />
+
+</LinearLayout>

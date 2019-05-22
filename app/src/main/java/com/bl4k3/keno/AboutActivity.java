@@ -17,14 +17,6 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         github = findViewById(R.id.github);
-        contact = findViewById(R.id.contact_us);
-    }
-
-    public void email_link(View view) {
-        intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"srdhnsh@gmail.com"});
-        startActivity(intent);
     }
 
     /*public void ratelink(View view) {
@@ -46,6 +38,9 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 
+    public void wnew(View v){
+        startActivity(new Intent(this,WhatsNew.class));
+    }
     public void githublink(View view) {
         intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);

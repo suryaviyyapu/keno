@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class Settings extends AppCompatActivity {
     Button deleteAcc, savePass, verifyAcc;
     EditText newPass, newPass1;
     Switch aSwitch;
+    LinearLayout linearLayout;
     TextView username,verifyTextVar;
     public static final String PREFS = "examplePrefs";
     @Override
@@ -36,6 +38,7 @@ public class Settings extends AppCompatActivity {
         verifyAcc = findViewById(R.id.verifyButton);
         username = findViewById(R.id.profileName);
         verifyTextVar = findViewById(R.id.verifyText);
+        linearLayout = findViewById(R.id.ll2);
         deleteAcc = findViewById(R.id.deleteAccount);
         savePass = findViewById(R.id.savePassword);
         newPass = findViewById(R.id.passChange1);

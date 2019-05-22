@@ -44,7 +44,7 @@ public class Timetable extends AppCompatActivity {
     TextView textView;
     Bitmap bitmap;
     String TAG = "Timetable";
-    String profileImgURL, photoStringLink;
+    String photoStringLink;
     private SharedPreferences pref;
     private static final int CHOOSE_IMAGE = 101;
    // public static final String Timetable = "Timetable";
@@ -99,7 +99,7 @@ public class Timetable extends AppCompatActivity {
 
     private void UploadImageToFirebase() {
         if (user!=null) {
-            final StorageReference profileImgRef = FirebaseStorage.getInstance().getReference("timetable/" + user.getDisplayName()+ "/" + System.currentTimeMillis() + ".jpg");
+            final StorageReference profileImgRef = FirebaseStorage.getInstance().getReference(Constants.TIMETABLE_PATH_UPLOADS + user.getUid()+ "/" + System.currentTimeMillis() + ".jpg");
             if (LocalFileUri != null) {
                 UploadTask uploadTask = profileImgRef.putFile(LocalFileUri);
                 Task<Uri> urlTask =uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {

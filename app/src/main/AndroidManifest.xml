@@ -19,8 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".WhatsNew"></activity>
         <activity android:name=".Tools" />
-        <activity android:name=".Notes" />
         <activity android:name=".Timetable" />
         <activity android:name=".Dashboard" />
         <activity android:name=".AttendanceActivity" /> <!-- Sample AdMob App ID: ca-app-pub-8212638041206076~2499605568 -->
@@ -38,11 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ListActivity" />
+        <activity
+            android:name=".PostNoteActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Keno"
             android:label="@string/title_keno"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Welcome"
             android:theme="@style/AppTheme.NoActionBar" />

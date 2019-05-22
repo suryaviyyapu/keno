@@ -14,15 +14,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String SUBJECTNAME = "name";
     static final String TOTALCONDUCTED = "totalConducted";
     static final String TOTALATTENDED = "totalAttended";
+    static final String PERCENTAGE = "percentage";
 
     // Database Information
     private static final String DB_NAME = "Subject_info.DB";
 
     // database version
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // Creating table query
-    private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SUBJECTNAME + " TEXT NOT NULL, " + TOTALCONDUCTED + " TEXT NOT NULL, " + TOTALATTENDED + " TEXT);";
+    private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SUBJECTNAME + " TEXT NOT NULL, " + TOTALCONDUCTED + " TEXT NOT NULL, " + TOTALATTENDED + " TEXT NOT NULL," + PERCENTAGE + " TEXT );";
 
     DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

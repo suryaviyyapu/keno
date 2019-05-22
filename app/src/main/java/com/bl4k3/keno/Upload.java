@@ -9,9 +9,10 @@ public class Upload {
 
     }
 
-    public Upload(String name){
+    /*public Upload(String name){
         this.name = name;
-    }
+    }*/
+
     public Upload(String name, String url){
         this.name = name;
         this.url = url;

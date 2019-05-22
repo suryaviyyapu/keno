@@ -10,7 +10,8 @@
         android:id="@+id/timetableImage"
         android:layout_width="415dp"
         android:layout_height="725dp"
-        android:src="@drawable/fulllogo"/>
+        android:src="@drawable/fulllogo"
+        android:contentDescription="TODO" />
     <RelativeLayout
         android:id="@+id/nott"
         android:layout_width="match_parent"
@@ -27,26 +28,26 @@
             android:layout_below="@+id/tx1"
             android:onClick="ttAdd"
             android:id="@+id/browse"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Browse"/>
         <Button
             android:id="@+id/save"
-            android:layout_marginLeft="140dp"
+            android:layout_marginStart="140dp"
             android:layout_below="@+id/tx1"
             android:layout_marginTop="50dp"
-            android:layout_toRightOf="@+id/browse"
+            android:layout_toEndOf="@+id/browse"
             android:onClick="save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"/>
         <TextView
             android:id="@+id/tx2"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:layout_marginTop="130dp"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_below="@+id/browse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

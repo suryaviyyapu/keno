@@ -21,7 +21,7 @@
 
 
     <EditText
-        android:id="@+id/totalHours"
+        android:id="@+id/TotalConducted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -33,7 +33,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/totalAttended"
+        android:id="@+id/TotalAttended"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
